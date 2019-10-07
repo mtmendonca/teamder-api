@@ -1,0 +1,4 @@
+vendor
+build
+google-credentials.json
+.env
