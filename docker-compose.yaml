@@ -1,0 +1,13 @@
+version: "2.4"
+
+services:
+  backend:
+    build:
+      args:
+        GO_VERSION: ${GO_VERSION}
+      context: .
+      dockerfile: gateway/dev.Dockerfile
+    volumes:
+      - .:/go/src/github.com/mtmendonca/backend:cached
+    ports:
+      - 80:80
