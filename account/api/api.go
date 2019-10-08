@@ -5,16 +5,19 @@ import (
 	"log"
 	"net"
 
-	"github.com/mtmendonca/teamder-api/common/grpc/user"
+	"github.com/mtmendonca/teamder-api/common/user"
 	"google.golang.org/grpc"
 )
 
+// Service defines microservice
 type Service struct{}
 
+// GetUser returns a user
 func (s *Service) GetUser(context.Context, *user.GetUserRequest) (*user.UserResponse, error) {
 	return &user.UserResponse{Name: "foo", Email: "bar", Avatar: "boo"}, nil
 }
 
+// Start fires up the service
 func Start(s *Service) {
 	lis, err := net.Listen("tcp", "3001")
 	if err != nil {
