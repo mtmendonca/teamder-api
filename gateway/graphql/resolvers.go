@@ -4,8 +4,8 @@ import (
 	"context"
 	"fmt"
 
-	"github.com/mtmendonca/backend/common/types"
-	"github.com/mtmendonca/backend/gateway/middleware"
+	"github.com/mtmendonca/teamder-api/common/types"
+	"github.com/mtmendonca/teamder-api/gateway/middleware"
 )
 
 // Resolver defines graphql resolvers

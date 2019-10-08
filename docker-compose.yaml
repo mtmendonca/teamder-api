@@ -8,6 +8,6 @@ services:
       context: .
       dockerfile: gateway/dev.Dockerfile
     volumes:
-      - .:/go/src/github.com/mtmendonca/backend:cached
+      - .:/go/src/github.com/mtmendonca/teamder-api:cached
     ports:
       - 80:80

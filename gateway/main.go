@@ -3,8 +3,8 @@ package main
 import (
 	"github.com/graph-gophers/graphql-go"
 	"github.com/graph-gophers/graphql-go/relay"
-	"github.com/mtmendonca/backend/gateway/api"
-	gql "github.com/mtmendonca/backend/gateway/graphql"
+	"github.com/mtmendonca/teamder-api/gateway/api"
+	gql "github.com/mtmendonca/teamder-api/gateway/graphql"
 )
 
 func main() {

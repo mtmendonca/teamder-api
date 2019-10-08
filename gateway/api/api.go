@@ -7,7 +7,7 @@ import (
 
 	"github.com/gorilla/mux"
 	"github.com/graph-gophers/graphql-go/relay"
-	"github.com/mtmendonca/backend/gateway/middleware"
+	"github.com/mtmendonca/teamder-api/gateway/middleware"
 	"github.com/urfave/negroni"
 )
 
