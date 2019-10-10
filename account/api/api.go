@@ -15,17 +15,8 @@ type Service struct {
 }
 
 // Login logs user in with provider, creates local record and returns token
-func (s *Service) Login(c context.Context, r *account.LoginRequest) (*string, error) {
-	u, err := s.UserStorage.GetByEmail(c, r.Email)
-	if err != nil {
-		panic(err)
-	}
-
-	if u == nil {
-		return nil, nil
-	}
-
-	return &account.UserResponse{Name: u.Name, Email: u.Email, Avatar: u.Avatar}, nil
+func (s *Service) Login(c context.Context, r *account.LoginRequest) (*account.LoginResponse, error) {
+	return &account.LoginResponse{Token: "my login token"}, nil
 }
 
 // Start fires up the service

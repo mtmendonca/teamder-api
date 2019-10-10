@@ -6,13 +6,11 @@ import (
 	"time"
 
 	"github.com/mtmendonca/teamder-api/common/grpc/account"
-	"github.com/mtmendonca/teamder-api/common/types"
 	"google.golang.org/grpc"
 )
 
 // Service provides an api to gRPC
 type Service interface {
-	GetUserByEmail(context.Context, string) (*types.User, error)
 	Login(context.Context, account.LoginRequest) (string, error)
 }
 

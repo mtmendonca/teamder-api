@@ -22,7 +22,7 @@ var (
 	`
 	mutations = `
 		type Mutation {
-			logIn(input: LogInInput!)
+			logIn(input: LogInInput!): String!
 		}
 	`
 )
