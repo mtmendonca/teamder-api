@@ -2,30 +2,44 @@ package api
 
 import (
 	"context"
-	"log"
 	"net"
 
 	"github.com/mtmendonca/teamder-api/common/grpc/account"
+	"github.com/mtmendonca/teamder-api/common/types"
 	"google.golang.org/grpc"
 )
 
 // Service defines microservice
-type Service struct{}
+type Service struct {
+	UserStorage types.UserStorage
+}
 
-// GetUser returns a user
-func (s *Service) GetUser(context.Context, *account.GetUserRequest) (*account.UserResponse, error) {
-	return &account.UserResponse{Name: "foo", Email: "bar", Avatar: "boo"}, nil
+// GetUserByEmail returns a user
+func (s *Service) GetUserByEmail(c context.Context, r *account.GetUserByEmailRequest) (*account.UserResponse, error) {
+	u, err := s.UserStorage.GetByEmail(c, r.Email)
+	if err != nil {
+		panic(err)
+	}
+
+	if u == nil {
+		return nil, nil
+	}
+
+	return &account.UserResponse{Name: u.Name, Email: u.Email, Avatar: u.Avatar}, nil
 }
 
 // Start fires up the service
-func Start(s *Service) {
-	lis, err := net.Listen("tcp", ":3001")
+func Start(s *Service, port string) {
+	// Start listener
+	lis, err := net.Listen("tcp", ":"+port)
 	if err != nil {
-		log.Fatalf("failed to listen: %v", err)
+		panic(err)
 	}
+
+	// Attach gRPC server
 	g := grpc.NewServer()
 	account.RegisterAccountServer(g, s)
 	if err := g.Serve(lis); err != nil {
-		log.Fatalf("failed to serve: %v", err)
+		panic(err)
 	}
 }

@@ -1,4 +1,4 @@
-ARG GO_VERSION
+ARG GO_VERSION=1.13-alpine
 
 FROM golang:${GO_VERSION}
 RUN apk update && apk add dep git

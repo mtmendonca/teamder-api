@@ -7,25 +7,19 @@ var (
 		type User {
 			name: String!
 			email: String!
-			avatar: String
+			avatar: String!
 		}
 	`
-	inputs = `
-		input CreateUserInput {
-			name: String!
-			email: String!
-			avatar: String
-		}
-	`
+	inputs = ``
+
 	queries = `
 		type Query {
-			hello: String!
-			sup: String!
+			getUserByEmail(email: String!): User!
 		}
 	`
 	mutations = `
 		type Mutation {
-			createUser(input: CreateUserInput!): User!
+			
 		}
 	`
 )

@@ -9,19 +9,28 @@ import (
 	"google.golang.org/grpc"
 )
 
-type AccountService interface {
-	GetUser() types.User
+// Service provides an api to gRPC
+type Service interface {
+	GetUserByEmail(context.Context, string) (*types.User, error)
 }
 
+// GRPCAccountService has a gRPC client
 type GRPCAccountService struct {
 	Client account.AccountClient
 }
 
-func (s *GRPCAccountService) GetUser(ctx context.Context) (*types.User, error) {
+// New instantiates Service with a given gRPC connection
+func New(conn *grpc.ClientConn) *GRPCAccountService {
+	c := account.NewAccountClient(conn)
+	return &GRPCAccountService{Client: c}
+}
+
+// GetUserByEmail finds user based on email
+func (s *GRPCAccountService) GetUserByEmail(ctx context.Context, email string) (*types.User, error) {
 	ctx, cancel := context.WithTimeout(ctx, time.Second*30)
 	defer cancel()
 
-	userResponse, err := s.Client.GetUser(ctx, &account.GetUserRequest{})
+	userResponse, err := s.Client.GetUserByEmail(ctx, &account.GetUserByEmailRequest{Email: email})
 	if err != nil {
 		return nil, err
 	}
@@ -29,11 +38,6 @@ func (s *GRPCAccountService) GetUser(ctx context.Context) (*types.User, error) {
 	return &types.User{
 		Name:   userResponse.Name,
 		Email:  userResponse.Email,
-		Avatar: &userResponse.Avatar,
+		Avatar: userResponse.Avatar,
 	}, nil
-}
-
-func New(conn *grpc.ClientConn) *GRPCAccountService {
-	c := account.NewAccountClient(conn)
-	return &GRPCAccountService{Client: c}
 }

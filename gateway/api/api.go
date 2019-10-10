@@ -14,10 +14,11 @@ import (
 // Service encapsulates the api and its dependencies
 type Service struct {
 	GraphqlHandler *relay.Handler
+	Config         map[string]string
 }
 
 // Start fires up the graphql server
-func Start(s *Service) {
+func Start(s *Service, addr string) {
 	// Router
 	r := mux.NewRouter()
 
@@ -38,7 +39,7 @@ func Start(s *Service) {
 	// Http server
 	srv := &http.Server{
 		Handler:      n,
-		Addr:         ":3000",
+		Addr:         addr,
 		WriteTimeout: 15 * time.Second,
 		ReadTimeout:  15 * time.Second,
 	}

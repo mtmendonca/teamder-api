@@ -2,31 +2,25 @@ package main
 
 import (
 	"context"
-	"log"
-	"net"
 
-	"github.com/mtmendonca/teamder-api/common/grpc/account"
-	"google.golang.org/grpc"
+	"github.com/mtmendonca/teamder-api/account/api"
+	"github.com/mtmendonca/teamder-api/account/storage/mongodb"
+	cMongodb "github.com/mtmendonca/teamder-api/common/mongodb"
 )
 
-type Service struct{}
-
-// GetUser returns a user
-func (s *Service) GetUser(context.Context, *account.GetUserRequest) (*account.UserResponse, error) {
-	return &account.UserResponse{Name: "foo", Email: "bar", Avatar: "boo"}, nil
-}
-
 func main() {
-	// service := &api.Service{}
-	// api.Start(service)
-	s := &Service{}
-	lis, err := net.Listen("tcp", ":3001")
+	// Load config
+	cfg := api.LoadConfig()
+
+	// Initialize mongo connection
+	db, err := cMongodb.New(context.Background(), cfg.MongoEndpoint, cfg.MongoDatabase)
 	if err != nil {
-		log.Fatalf("failed to listen: %v", err)
+		panic(err)
 	}
-	g := grpc.NewServer()
-	account.RegisterAccountServer(g, s)
-	if err := g.Serve(lis); err != nil {
-		log.Fatalf("failed to serve: %v", err)
+
+	s := &api.Service{
+		UserStorage: mongodb.NewUserStorage(db),
 	}
+
+	api.Start(s, cfg.APIPort)
 }
