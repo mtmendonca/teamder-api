@@ -2,6 +2,7 @@ package account
 
 import (
 	"context"
+	"fmt"
 	"time"
 
 	"github.com/mtmendonca/teamder-api/common/grpc/account"
@@ -12,6 +13,7 @@ import (
 // Service provides an api to gRPC
 type Service interface {
 	GetUserByEmail(context.Context, string) (*types.User, error)
+	Login(context.Context, account.LoginRequest) (string, error)
 }
 
 // GRPCAccountService has a gRPC client
@@ -25,19 +27,17 @@ func New(conn *grpc.ClientConn) *GRPCAccountService {
 	return &GRPCAccountService{Client: c}
 }
 
-// GetUserByEmail finds user based on email
-func (s *GRPCAccountService) GetUserByEmail(ctx context.Context, email string) (*types.User, error) {
+// Login logs user in with provider and creates a local record if none exists
+func (s *GRPCAccountService) Login(ctx context.Context, r account.LoginRequest) (string, error) {
 	ctx, cancel := context.WithTimeout(ctx, time.Second*30)
 	defer cancel()
 
-	userResponse, err := s.Client.GetUserByEmail(ctx, &account.GetUserByEmailRequest{Email: email})
+	userResponse, err := s.Client.Login(ctx, &r)
 	if err != nil {
-		return nil, err
+		fmt.Println(userResponse)
+		return "", err
 	}
 
-	return &types.User{
-		Name:   userResponse.Name,
-		Email:  userResponse.Email,
-		Avatar: userResponse.Avatar,
-	}, nil
+	return "calculated token", nil
+	// return userResponse.GetToken(), nil
 }

@@ -10,16 +10,19 @@ var (
 			avatar: String!
 		}
 	`
-	inputs = ``
+	inputs = `
+		input LogInInput {
+			token: String!
+			provider: String!
+		}
+	`
 
 	queries = `
-		type Query {
-			getUserByEmail(email: String!): User!
-		}
+		type Query {}
 	`
 	mutations = `
 		type Mutation {
-			
+			logIn(input: LogInInput!)
 		}
 	`
 )

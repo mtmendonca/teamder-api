@@ -1,9 +1,13 @@
 syntax = "proto3";
 package account;
 
+message LoginRequest {
+  string token = 1;
+  string provider = 2;
+}
 
-message GetUserByEmailRequest {
-  string email = 1;
+message LoginResponse {
+  string token = 1;
 }
 
 message UserResponse {
@@ -14,5 +18,5 @@ message UserResponse {
 }
 
 service Account {
-  rpc getUserByEmail(GetUserByEmailRequest) returns (UserResponse) {}
+  rpc Login(LoginRequest) returns (LoginResponse) {}
 }

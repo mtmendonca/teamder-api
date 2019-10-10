@@ -24,41 +24,88 @@ var _ = math.Inf
 // proto package needs to be updated.
 const _ = proto.ProtoPackageIsVersion3 // please upgrade the proto package
 
-type GetUserByEmailRequest struct {
-	Email                string   `protobuf:"bytes,1,opt,name=email,proto3" json:"email,omitempty"`
+type LoginRequest struct {
+	Token                string   `protobuf:"bytes,1,opt,name=token,proto3" json:"token,omitempty"`
+	Provider             string   `protobuf:"bytes,2,opt,name=provider,proto3" json:"provider,omitempty"`
 	XXX_NoUnkeyedLiteral struct{} `json:"-"`
 	XXX_unrecognized     []byte   `json:"-"`
 	XXX_sizecache        int32    `json:"-"`
 }
 
-func (m *GetUserByEmailRequest) Reset()         { *m = GetUserByEmailRequest{} }
-func (m *GetUserByEmailRequest) String() string { return proto.CompactTextString(m) }
-func (*GetUserByEmailRequest) ProtoMessage()    {}
-func (*GetUserByEmailRequest) Descriptor() ([]byte, []int) {
+func (m *LoginRequest) Reset()         { *m = LoginRequest{} }
+func (m *LoginRequest) String() string { return proto.CompactTextString(m) }
+func (*LoginRequest) ProtoMessage()    {}
+func (*LoginRequest) Descriptor() ([]byte, []int) {
 	return fileDescriptor_d66906c5773c9d08, []int{0}
 }
 
-func (m *GetUserByEmailRequest) XXX_Unmarshal(b []byte) error {
-	return xxx_messageInfo_GetUserByEmailRequest.Unmarshal(m, b)
+func (m *LoginRequest) XXX_Unmarshal(b []byte) error {
+	return xxx_messageInfo_LoginRequest.Unmarshal(m, b)
 }
-func (m *GetUserByEmailRequest) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
-	return xxx_messageInfo_GetUserByEmailRequest.Marshal(b, m, deterministic)
+func (m *LoginRequest) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
+	return xxx_messageInfo_LoginRequest.Marshal(b, m, deterministic)
 }
-func (m *GetUserByEmailRequest) XXX_Merge(src proto.Message) {
-	xxx_messageInfo_GetUserByEmailRequest.Merge(m, src)
+func (m *LoginRequest) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_LoginRequest.Merge(m, src)
 }
-func (m *GetUserByEmailRequest) XXX_Size() int {
-	return xxx_messageInfo_GetUserByEmailRequest.Size(m)
+func (m *LoginRequest) XXX_Size() int {
+	return xxx_messageInfo_LoginRequest.Size(m)
 }
-func (m *GetUserByEmailRequest) XXX_DiscardUnknown() {
-	xxx_messageInfo_GetUserByEmailRequest.DiscardUnknown(m)
+func (m *LoginRequest) XXX_DiscardUnknown() {
+	xxx_messageInfo_LoginRequest.DiscardUnknown(m)
 }
 
-var xxx_messageInfo_GetUserByEmailRequest proto.InternalMessageInfo
+var xxx_messageInfo_LoginRequest proto.InternalMessageInfo
 
-func (m *GetUserByEmailRequest) GetEmail() string {
+func (m *LoginRequest) GetToken() string {
 	if m != nil {
-		return m.Email
+		return m.Token
+	}
+	return ""
+}
+
+func (m *LoginRequest) GetProvider() string {
+	if m != nil {
+		return m.Provider
+	}
+	return ""
+}
+
+type LoginResponse struct {
+	Token                string   `protobuf:"bytes,1,opt,name=token,proto3" json:"token,omitempty"`
+	XXX_NoUnkeyedLiteral struct{} `json:"-"`
+	XXX_unrecognized     []byte   `json:"-"`
+	XXX_sizecache        int32    `json:"-"`
+}
+
+func (m *LoginResponse) Reset()         { *m = LoginResponse{} }
+func (m *LoginResponse) String() string { return proto.CompactTextString(m) }
+func (*LoginResponse) ProtoMessage()    {}
+func (*LoginResponse) Descriptor() ([]byte, []int) {
+	return fileDescriptor_d66906c5773c9d08, []int{1}
+}
+
+func (m *LoginResponse) XXX_Unmarshal(b []byte) error {
+	return xxx_messageInfo_LoginResponse.Unmarshal(m, b)
+}
+func (m *LoginResponse) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
+	return xxx_messageInfo_LoginResponse.Marshal(b, m, deterministic)
+}
+func (m *LoginResponse) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_LoginResponse.Merge(m, src)
+}
+func (m *LoginResponse) XXX_Size() int {
+	return xxx_messageInfo_LoginResponse.Size(m)
+}
+func (m *LoginResponse) XXX_DiscardUnknown() {
+	xxx_messageInfo_LoginResponse.DiscardUnknown(m)
+}
+
+var xxx_messageInfo_LoginResponse proto.InternalMessageInfo
+
+func (m *LoginResponse) GetToken() string {
+	if m != nil {
+		return m.Token
 	}
 	return ""
 }
@@ -77,7 +124,7 @@ func (m *UserResponse) Reset()         { *m = UserResponse{} }
 func (m *UserResponse) String() string { return proto.CompactTextString(m) }
 func (*UserResponse) ProtoMessage()    {}
 func (*UserResponse) Descriptor() ([]byte, []int) {
-	return fileDescriptor_d66906c5773c9d08, []int{1}
+	return fileDescriptor_d66906c5773c9d08, []int{2}
 }
 
 func (m *UserResponse) XXX_Unmarshal(b []byte) error {
@@ -127,26 +174,28 @@ func (m *UserResponse) GetAvatar() string {
 }
 
 func init() {
-	proto.RegisterType((*GetUserByEmailRequest)(nil), "account.GetUserByEmailRequest")
+	proto.RegisterType((*LoginRequest)(nil), "account.LoginRequest")
+	proto.RegisterType((*LoginResponse)(nil), "account.LoginResponse")
 	proto.RegisterType((*UserResponse)(nil), "account.UserResponse")
 }
 
 func init() { proto.RegisterFile("account/account.proto", fileDescriptor_d66906c5773c9d08) }
 
 var fileDescriptor_d66906c5773c9d08 = []byte{
-	// 183 bytes of a gzipped FileDescriptorProto
+	// 208 bytes of a gzipped FileDescriptorProto
 	0x1f, 0x8b, 0x08, 0x00, 0x00, 0x00, 0x00, 0x00, 0x02, 0xff, 0xe2, 0x12, 0x4d, 0x4c, 0x4e, 0xce,
 	0x2f, 0xcd, 0x2b, 0xd1, 0x87, 0xd2, 0x7a, 0x05, 0x45, 0xf9, 0x25, 0xf9, 0x42, 0xec, 0x50, 0xae,
-	0x92, 0x2e, 0x97, 0xa8, 0x7b, 0x6a, 0x49, 0x68, 0x71, 0x6a, 0x91, 0x53, 0xa5, 0x6b, 0x6e, 0x62,
-	0x66, 0x4e, 0x50, 0x6a, 0x61, 0x69, 0x6a, 0x71, 0x89, 0x90, 0x08, 0x17, 0x6b, 0x2a, 0x88, 0x2f,
-	0xc1, 0xa8, 0xc0, 0xa8, 0xc1, 0x19, 0x04, 0xe1, 0x28, 0x65, 0x70, 0xf1, 0x80, 0xd4, 0x06, 0xa5,
-	0x16, 0x17, 0xe4, 0xe7, 0x15, 0xa7, 0x0a, 0x89, 0x71, 0xb1, 0x95, 0x16, 0xa7, 0x16, 0x79, 0xba,
-	0x40, 0x95, 0x41, 0x79, 0x42, 0x42, 0x5c, 0x2c, 0x79, 0x89, 0xb9, 0xa9, 0x12, 0x4c, 0x60, 0x51,
-	0x30, 0x1b, 0x61, 0x22, 0x33, 0x92, 0x89, 0x20, 0x13, 0x12, 0xcb, 0x12, 0x4b, 0x12, 0x8b, 0x24,
-	0x58, 0x20, 0x26, 0x40, 0x78, 0x46, 0x21, 0x5c, 0xec, 0x8e, 0x10, 0x37, 0x0a, 0x79, 0x72, 0xf1,
-	0xa5, 0xa3, 0xb8, 0x51, 0x48, 0x4e, 0x0f, 0xe6, 0x1d, 0xac, 0x8e, 0x97, 0x12, 0x85, 0xcb, 0x23,
-	0xbb, 0x56, 0x89, 0x21, 0x89, 0x0d, 0xec, 0x7d, 0x63, 0x40, 0x00, 0x00, 0x00, 0xff, 0xff, 0x9e,
-	0xc9, 0xba, 0x87, 0x17, 0x01, 0x00, 0x00,
+	0x92, 0x03, 0x17, 0x8f, 0x4f, 0x7e, 0x7a, 0x66, 0x5e, 0x50, 0x6a, 0x61, 0x69, 0x6a, 0x71, 0x89,
+	0x90, 0x08, 0x17, 0x6b, 0x49, 0x7e, 0x76, 0x6a, 0x9e, 0x04, 0xa3, 0x02, 0xa3, 0x06, 0x67, 0x10,
+	0x84, 0x23, 0x24, 0xc5, 0xc5, 0x51, 0x50, 0x94, 0x5f, 0x96, 0x99, 0x92, 0x5a, 0x24, 0xc1, 0x04,
+	0x96, 0x80, 0xf3, 0x95, 0x54, 0xb9, 0x78, 0xa1, 0x26, 0x14, 0x17, 0xe4, 0xe7, 0x15, 0xa7, 0x62,
+	0x37, 0x42, 0x29, 0x83, 0x8b, 0x27, 0xb4, 0x38, 0xb5, 0x08, 0xae, 0x4a, 0x8c, 0x8b, 0xad, 0xb4,
+	0x38, 0xb5, 0xc8, 0xd3, 0x05, 0xaa, 0x0c, 0xca, 0x13, 0x12, 0xe2, 0x62, 0xc9, 0x4b, 0xcc, 0x4d,
+	0x85, 0x5a, 0x03, 0x66, 0x83, 0x4c, 0x4c, 0xcd, 0x4d, 0xcc, 0xcc, 0x91, 0x60, 0x86, 0x98, 0x08,
+	0xe6, 0x80, 0x4c, 0x48, 0x2c, 0x4b, 0x2c, 0x49, 0x2c, 0x92, 0x60, 0x81, 0x98, 0x00, 0xe1, 0x19,
+	0x39, 0x73, 0xb1, 0x3b, 0x42, 0x7c, 0x27, 0x64, 0xc1, 0xc5, 0x0a, 0x76, 0x9b, 0x90, 0xa8, 0x1e,
+	0xcc, 0xff, 0xc8, 0xbe, 0x95, 0x12, 0x43, 0x17, 0x86, 0x38, 0x4e, 0x89, 0x21, 0x89, 0x0d, 0x1c,
+	0x4e, 0xc6, 0x80, 0x00, 0x00, 0x00, 0xff, 0xff, 0xda, 0xdd, 0x54, 0xd6, 0x40, 0x01, 0x00, 0x00,
 }
 
 // Reference imports to suppress errors if they are not otherwise used.
@@ -161,7 +210,7 @@ const _ = grpc.SupportPackageIsVersion4
 //
 // For semantics around ctx use and closing/ending streaming RPCs, please refer to https://godoc.org/google.golang.org/grpc#ClientConn.NewStream.
 type AccountClient interface {
-	GetUserByEmail(ctx context.Context, in *GetUserByEmailRequest, opts ...grpc.CallOption) (*UserResponse, error)
+	Login(ctx context.Context, in *LoginRequest, opts ...grpc.CallOption) (*LoginResponse, error)
 }
 
 type accountClient struct {
@@ -172,9 +221,9 @@ func NewAccountClient(cc *grpc.ClientConn) AccountClient {
 	return &accountClient{cc}
 }
 
-func (c *accountClient) GetUserByEmail(ctx context.Context, in *GetUserByEmailRequest, opts ...grpc.CallOption) (*UserResponse, error) {
-	out := new(UserResponse)
-	err := c.cc.Invoke(ctx, "/account.Account/getUserByEmail", in, out, opts...)
+func (c *accountClient) Login(ctx context.Context, in *LoginRequest, opts ...grpc.CallOption) (*LoginResponse, error) {
+	out := new(LoginResponse)
+	err := c.cc.Invoke(ctx, "/account.Account/Login", in, out, opts...)
 	if err != nil {
 		return nil, err
 	}
@@ -183,35 +232,35 @@ func (c *accountClient) GetUserByEmail(ctx context.Context, in *GetUserByEmailRe
 
 // AccountServer is the server API for Account service.
 type AccountServer interface {
-	GetUserByEmail(context.Context, *GetUserByEmailRequest) (*UserResponse, error)
+	Login(context.Context, *LoginRequest) (*LoginResponse, error)
 }
 
 // UnimplementedAccountServer can be embedded to have forward compatible implementations.
 type UnimplementedAccountServer struct {
 }
 
-func (*UnimplementedAccountServer) GetUserByEmail(ctx context.Context, req *GetUserByEmailRequest) (*UserResponse, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method GetUserByEmail not implemented")
+func (*UnimplementedAccountServer) Login(ctx context.Context, req *LoginRequest) (*LoginResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method Login not implemented")
 }
 
 func RegisterAccountServer(s *grpc.Server, srv AccountServer) {
 	s.RegisterService(&_Account_serviceDesc, srv)
 }
 
-func _Account_GetUserByEmail_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(GetUserByEmailRequest)
+func _Account_Login_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(LoginRequest)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
 	if interceptor == nil {
-		return srv.(AccountServer).GetUserByEmail(ctx, in)
+		return srv.(AccountServer).Login(ctx, in)
 	}
 	info := &grpc.UnaryServerInfo{
 		Server:     srv,
-		FullMethod: "/account.Account/GetUserByEmail",
+		FullMethod: "/account.Account/Login",
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(AccountServer).GetUserByEmail(ctx, req.(*GetUserByEmailRequest))
+		return srv.(AccountServer).Login(ctx, req.(*LoginRequest))
 	}
 	return interceptor(ctx, in, info, handler)
 }
@@ -221,8 +270,8 @@ var _Account_serviceDesc = grpc.ServiceDesc{
 	HandlerType: (*AccountServer)(nil),
 	Methods: []grpc.MethodDesc{
 		{
-			MethodName: "getUserByEmail",
-			Handler:    _Account_GetUserByEmail_Handler,
+			MethodName: "Login",
+			Handler:    _Account_Login_Handler,
 		},
 	},
 	Streams:  []grpc.StreamDesc{},

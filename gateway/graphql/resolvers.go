@@ -4,7 +4,7 @@ import (
 	"context"
 	"fmt"
 
-	"github.com/mtmendonca/teamder-api/common/types"
+	cmnAccount "github.com/mtmendonca/teamder-api/common/grpc/account"
 	"github.com/mtmendonca/teamder-api/gateway/grpc/account"
 )
 
@@ -13,15 +13,11 @@ type Resolver struct {
 	GRPCAccountService account.Service
 }
 
-type getUserByEmailArgs struct {
-	Email string
-}
-
-// GetUserByEmail fetches user from gprc service
-func (r *Resolver) GetUserByEmail(ctx context.Context, args *getUserByEmailArgs) *types.User {
-	user, err := r.GRPCAccountService.GetUserByEmail(ctx, args.Email)
+// Login authenticates user with google. Creates local user record if none exists
+func (r *Resolver) Login(ctx context.Context, args *struct{ Input cmnAccount.LoginRequest }) string {
+	token, err := r.GRPCAccountService.Login(ctx, args.Input)
 	if err != nil {
-		fmt.Println("errored", err)
+		fmt.Println(err)
 	}
-	return user
+	return token
 }

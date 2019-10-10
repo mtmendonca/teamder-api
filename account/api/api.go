@@ -14,8 +14,8 @@ type Service struct {
 	UserStorage types.UserStorage
 }
 
-// GetUserByEmail returns a user
-func (s *Service) GetUserByEmail(c context.Context, r *account.GetUserByEmailRequest) (*account.UserResponse, error) {
+// Login logs user in with provider, creates local record and returns token
+func (s *Service) Login(c context.Context, r *account.LoginRequest) (*string, error) {
 	u, err := s.UserStorage.GetByEmail(c, r.Email)
 	if err != nil {
 		panic(err)

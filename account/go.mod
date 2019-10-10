@@ -7,6 +7,7 @@ require (
 	github.com/mtmendonca/teamder-api/common/mongodb v0.0.0-00010101000000-000000000000
 	github.com/mtmendonca/teamder-api/common/types v0.0.0-00010101000000-000000000000
 	go.mongodb.org/mongo-driver v1.1.2
+	google.golang.org/api v0.11.0
 	google.golang.org/grpc v1.24.0
 )
 
