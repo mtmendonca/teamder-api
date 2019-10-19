@@ -1,4 +1,7 @@
 # Event Teamder Api
 
-Application that keeps track of events and job openings offered at each event.
-Uses Go, GraphQL, gRPC and Mongo
+## v1
+
+- http server
+- config, loggin e middleware
+- rota /healthcheck
