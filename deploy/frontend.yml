@@ -1,0 +1,39 @@
+kind: Deployment
+apiVersion: extensions/v1beta1
+metadata:
+  name: frontend
+spec:
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: frontend
+        env: development
+    spec:
+      containers:
+      - name: frontend
+        image: 10.200.10.1:5000/guilhermebr/frontend:latest
+        imagePullPolicy: "Always"
+        ports:
+        - containerPort: 3000
+        env:
+        - name: PORT
+          value: "3000"
+
+---
+
+kind: Service
+apiVersion: v1
+metadata:
+  name: frontend
+  labels:
+    app: frontend
+    env: development
+spec:
+  ports:
+  - port: 80
+    targetPort: 3000
+  selector:
+    app: frontend
+    env: development
+  type: LoadBalancer

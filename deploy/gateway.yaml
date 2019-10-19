@@ -1,0 +1,41 @@
+kind: Deployment
+apiVersion: extensions/v1beta1
+metadata:
+  name: gateway
+spec:
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: gateway
+        tier: backend
+        env: development
+    spec:
+      containers:
+      - name: gateway
+        image: 10.200.10.1:5000/guilhermebr/gateway:latest
+        imagePullPolicy: "Always"
+        ports:
+        - containerPort: 3000
+        env:
+        - name: API_PORT
+          value: "3000"
+        - name: EVENT_SERVICE_ENDPOINT
+          value: "event"
+
+---
+
+kind: Service
+apiVersion: v1
+metadata:
+  name: gateway
+  labels:
+    app: gateway
+    env: development
+spec:
+  ports:
+  - port: 80
+    targetPort: 3000
+  selector:
+    app: gateway
+    env: development
