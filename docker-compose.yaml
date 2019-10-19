@@ -21,23 +21,6 @@ services:
     working_dir: /go/src/github.com/mtmendonca/teamder-api/gateway
     ports:
       - 3000:3000
-  account:
-    build:
-      args:
-        GO_VERSION: ${GO_VERSION}
-      context: .
-      dockerfile: dev.Dockerfile
-    depends_on:
-      - mongo
-    environment:
-      API_PORT: 3001
-      MONGO_ENDPOINT:
-      MONGO_DATABASE:
-      GOOGLE_API_CLIENT_ID:
-      JWT_SECRET_KEY:
-    working_dir: /go/src/github.com/mtmendonca/teamder-api/account
-    ports:
-      - 3001:3001
   event:
     build:
       args:

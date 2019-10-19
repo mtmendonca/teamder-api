@@ -1,28 +1,12 @@
 syntax = "proto3";
 package event;
 
-message Skill {
-  string name = 1;
-  string level = 2;
-}
-
-message Position {
-	string name = 1;
-	string company = 2;
-	string location = 3;
-	string description = 4;
-	string experience = 5;
-	string education = 6;
-  repeated Skill skills = 7;
-}
-
 message Event {
   string ID = 1;
   string name = 2;
   string description = 3;
   string venue = 4;
   string date = 5;
-  repeated Position positions = 6;
 }
 
 message GetEventsRequest {}
@@ -42,27 +26,8 @@ message CreateEventResponse {
   Event event = 1;
 }
 
-message GetEventByIDRequest{
-  string ID = 1;
-}
-
-message GetEventByIDResponse{
-  Event event = 1;
-}
-
-message CreatePositionRequest {
-  Position position = 1;
-  string eventID = 2;
-}
-
-message CreatePositionResponse {
-  bool success = 1;
-}
-
 // implemented by event/api/Service
 service EventService {
   rpc GetEvents(GetEventsRequest) returns (GetEventsResponse) {}
   rpc CreateEvent(CreateEventRequest) returns (CreateEventResponse) {}
-  rpc GetEventByID(GetEventByIDRequest) returns (GetEventByIDResponse) {}
-  rpc CreatePosition(CreatePositionRequest) returns (CreatePositionResponse) {}
 }
