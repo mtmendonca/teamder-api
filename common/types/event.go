@@ -9,24 +9,11 @@ type Event struct {
 	Description string
 	Venue       string
 	Date        string
-	Positions   []*Position
-}
-
-// Position defines a job offering
-type Position struct {
-	Name        string
-	Company     string
-	Location    string
-	Description string
-	Experience  string
-	Education   string
-	Skills      []*Skill
+	Positions   []*interface{}
 }
 
 // EventStorage defines persistence operations
 type EventStorage interface {
 	GetEvents(context.Context) ([]*Event, error)
 	CreateEvent(context.Context, *Event) error
-	GetEventByID(context.Context, string) (*Event, error)
-	CreatePosition(context.Context, string, *Position) error
 }

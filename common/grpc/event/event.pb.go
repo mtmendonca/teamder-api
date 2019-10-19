@@ -24,157 +24,22 @@ var _ = math.Inf
 // proto package needs to be updated.
 const _ = proto.ProtoPackageIsVersion3 // please upgrade the proto package
 
-type Skill struct {
-	Name                 string   `protobuf:"bytes,1,opt,name=name,proto3" json:"name,omitempty"`
-	Level                string   `protobuf:"bytes,2,opt,name=level,proto3" json:"level,omitempty"`
-	XXX_NoUnkeyedLiteral struct{} `json:"-"`
-	XXX_unrecognized     []byte   `json:"-"`
-	XXX_sizecache        int32    `json:"-"`
-}
-
-func (m *Skill) Reset()         { *m = Skill{} }
-func (m *Skill) String() string { return proto.CompactTextString(m) }
-func (*Skill) ProtoMessage()    {}
-func (*Skill) Descriptor() ([]byte, []int) {
-	return fileDescriptor_510ac585eaa75cc0, []int{0}
-}
-
-func (m *Skill) XXX_Unmarshal(b []byte) error {
-	return xxx_messageInfo_Skill.Unmarshal(m, b)
-}
-func (m *Skill) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
-	return xxx_messageInfo_Skill.Marshal(b, m, deterministic)
-}
-func (m *Skill) XXX_Merge(src proto.Message) {
-	xxx_messageInfo_Skill.Merge(m, src)
-}
-func (m *Skill) XXX_Size() int {
-	return xxx_messageInfo_Skill.Size(m)
-}
-func (m *Skill) XXX_DiscardUnknown() {
-	xxx_messageInfo_Skill.DiscardUnknown(m)
-}
-
-var xxx_messageInfo_Skill proto.InternalMessageInfo
-
-func (m *Skill) GetName() string {
-	if m != nil {
-		return m.Name
-	}
-	return ""
-}
-
-func (m *Skill) GetLevel() string {
-	if m != nil {
-		return m.Level
-	}
-	return ""
-}
-
-type Position struct {
-	Name                 string   `protobuf:"bytes,1,opt,name=name,proto3" json:"name,omitempty"`
-	Company              string   `protobuf:"bytes,2,opt,name=company,proto3" json:"company,omitempty"`
-	Location             string   `protobuf:"bytes,3,opt,name=location,proto3" json:"location,omitempty"`
-	Description          string   `protobuf:"bytes,4,opt,name=description,proto3" json:"description,omitempty"`
-	Experience           string   `protobuf:"bytes,5,opt,name=experience,proto3" json:"experience,omitempty"`
-	Education            string   `protobuf:"bytes,6,opt,name=education,proto3" json:"education,omitempty"`
-	Skills               []*Skill `protobuf:"bytes,7,rep,name=skills,proto3" json:"skills,omitempty"`
-	XXX_NoUnkeyedLiteral struct{} `json:"-"`
-	XXX_unrecognized     []byte   `json:"-"`
-	XXX_sizecache        int32    `json:"-"`
-}
-
-func (m *Position) Reset()         { *m = Position{} }
-func (m *Position) String() string { return proto.CompactTextString(m) }
-func (*Position) ProtoMessage()    {}
-func (*Position) Descriptor() ([]byte, []int) {
-	return fileDescriptor_510ac585eaa75cc0, []int{1}
-}
-
-func (m *Position) XXX_Unmarshal(b []byte) error {
-	return xxx_messageInfo_Position.Unmarshal(m, b)
-}
-func (m *Position) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
-	return xxx_messageInfo_Position.Marshal(b, m, deterministic)
-}
-func (m *Position) XXX_Merge(src proto.Message) {
-	xxx_messageInfo_Position.Merge(m, src)
-}
-func (m *Position) XXX_Size() int {
-	return xxx_messageInfo_Position.Size(m)
-}
-func (m *Position) XXX_DiscardUnknown() {
-	xxx_messageInfo_Position.DiscardUnknown(m)
-}
-
-var xxx_messageInfo_Position proto.InternalMessageInfo
-
-func (m *Position) GetName() string {
-	if m != nil {
-		return m.Name
-	}
-	return ""
-}
-
-func (m *Position) GetCompany() string {
-	if m != nil {
-		return m.Company
-	}
-	return ""
-}
-
-func (m *Position) GetLocation() string {
-	if m != nil {
-		return m.Location
-	}
-	return ""
-}
-
-func (m *Position) GetDescription() string {
-	if m != nil {
-		return m.Description
-	}
-	return ""
-}
-
-func (m *Position) GetExperience() string {
-	if m != nil {
-		return m.Experience
-	}
-	return ""
-}
-
-func (m *Position) GetEducation() string {
-	if m != nil {
-		return m.Education
-	}
-	return ""
-}
-
-func (m *Position) GetSkills() []*Skill {
-	if m != nil {
-		return m.Skills
-	}
-	return nil
-}
-
 type Event struct {
-	ID                   string      `protobuf:"bytes,1,opt,name=ID,proto3" json:"ID,omitempty"`
-	Name                 string      `protobuf:"bytes,2,opt,name=name,proto3" json:"name,omitempty"`
-	Description          string      `protobuf:"bytes,3,opt,name=description,proto3" json:"description,omitempty"`
-	Venue                string      `protobuf:"bytes,4,opt,name=venue,proto3" json:"venue,omitempty"`
-	Date                 string      `protobuf:"bytes,5,opt,name=date,proto3" json:"date,omitempty"`
-	Positions            []*Position `protobuf:"bytes,6,rep,name=positions,proto3" json:"positions,omitempty"`
-	XXX_NoUnkeyedLiteral struct{}    `json:"-"`
-	XXX_unrecognized     []byte      `json:"-"`
-	XXX_sizecache        int32       `json:"-"`
+	ID                   string   `protobuf:"bytes,1,opt,name=ID,proto3" json:"ID,omitempty"`
+	Name                 string   `protobuf:"bytes,2,opt,name=name,proto3" json:"name,omitempty"`
+	Description          string   `protobuf:"bytes,3,opt,name=description,proto3" json:"description,omitempty"`
+	Venue                string   `protobuf:"bytes,4,opt,name=venue,proto3" json:"venue,omitempty"`
+	Date                 string   `protobuf:"bytes,5,opt,name=date,proto3" json:"date,omitempty"`
+	XXX_NoUnkeyedLiteral struct{} `json:"-"`
+	XXX_unrecognized     []byte   `json:"-"`
+	XXX_sizecache        int32    `json:"-"`
 }
 
 func (m *Event) Reset()         { *m = Event{} }
 func (m *Event) String() string { return proto.CompactTextString(m) }
 func (*Event) ProtoMessage()    {}
 func (*Event) Descriptor() ([]byte, []int) {
-	return fileDescriptor_510ac585eaa75cc0, []int{2}
+	return fileDescriptor_510ac585eaa75cc0, []int{0}
 }
 
 func (m *Event) XXX_Unmarshal(b []byte) error {
@@ -230,13 +95,6 @@ func (m *Event) GetDate() string {
 	return ""
 }
 
-func (m *Event) GetPositions() []*Position {
-	if m != nil {
-		return m.Positions
-	}
-	return nil
-}
-
 type GetEventsRequest struct {
 	XXX_NoUnkeyedLiteral struct{} `json:"-"`
 	XXX_unrecognized     []byte   `json:"-"`
@@ -247,7 +105,7 @@ func (m *GetEventsRequest) Reset()         { *m = GetEventsRequest{} }
 func (m *GetEventsRequest) String() string { return proto.CompactTextString(m) }
 func (*GetEventsRequest) ProtoMessage()    {}
 func (*GetEventsRequest) Descriptor() ([]byte, []int) {
-	return fileDescriptor_510ac585eaa75cc0, []int{3}
+	return fileDescriptor_510ac585eaa75cc0, []int{1}
 }
 
 func (m *GetEventsRequest) XXX_Unmarshal(b []byte) error {
@@ -279,7 +137,7 @@ func (m *GetEventsResponse) Reset()         { *m = GetEventsResponse{} }
 func (m *GetEventsResponse) String() string { return proto.CompactTextString(m) }
 func (*GetEventsResponse) ProtoMessage()    {}
 func (*GetEventsResponse) Descriptor() ([]byte, []int) {
-	return fileDescriptor_510ac585eaa75cc0, []int{4}
+	return fileDescriptor_510ac585eaa75cc0, []int{2}
 }
 
 func (m *GetEventsResponse) XXX_Unmarshal(b []byte) error {
@@ -321,7 +179,7 @@ func (m *CreateEventRequest) Reset()         { *m = CreateEventRequest{} }
 func (m *CreateEventRequest) String() string { return proto.CompactTextString(m) }
 func (*CreateEventRequest) ProtoMessage()    {}
 func (*CreateEventRequest) Descriptor() ([]byte, []int) {
-	return fileDescriptor_510ac585eaa75cc0, []int{5}
+	return fileDescriptor_510ac585eaa75cc0, []int{3}
 }
 
 func (m *CreateEventRequest) XXX_Unmarshal(b []byte) error {
@@ -381,7 +239,7 @@ func (m *CreateEventResponse) Reset()         { *m = CreateEventResponse{} }
 func (m *CreateEventResponse) String() string { return proto.CompactTextString(m) }
 func (*CreateEventResponse) ProtoMessage()    {}
 func (*CreateEventResponse) Descriptor() ([]byte, []int) {
-	return fileDescriptor_510ac585eaa75cc0, []int{6}
+	return fileDescriptor_510ac585eaa75cc0, []int{4}
 }
 
 func (m *CreateEventResponse) XXX_Unmarshal(b []byte) error {
@@ -409,219 +267,35 @@ func (m *CreateEventResponse) GetEvent() *Event {
 	return nil
 }
 
-type GetEventByIDRequest struct {
-	ID                   string   `protobuf:"bytes,1,opt,name=ID,proto3" json:"ID,omitempty"`
-	XXX_NoUnkeyedLiteral struct{} `json:"-"`
-	XXX_unrecognized     []byte   `json:"-"`
-	XXX_sizecache        int32    `json:"-"`
-}
-
-func (m *GetEventByIDRequest) Reset()         { *m = GetEventByIDRequest{} }
-func (m *GetEventByIDRequest) String() string { return proto.CompactTextString(m) }
-func (*GetEventByIDRequest) ProtoMessage()    {}
-func (*GetEventByIDRequest) Descriptor() ([]byte, []int) {
-	return fileDescriptor_510ac585eaa75cc0, []int{7}
-}
-
-func (m *GetEventByIDRequest) XXX_Unmarshal(b []byte) error {
-	return xxx_messageInfo_GetEventByIDRequest.Unmarshal(m, b)
-}
-func (m *GetEventByIDRequest) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
-	return xxx_messageInfo_GetEventByIDRequest.Marshal(b, m, deterministic)
-}
-func (m *GetEventByIDRequest) XXX_Merge(src proto.Message) {
-	xxx_messageInfo_GetEventByIDRequest.Merge(m, src)
-}
-func (m *GetEventByIDRequest) XXX_Size() int {
-	return xxx_messageInfo_GetEventByIDRequest.Size(m)
-}
-func (m *GetEventByIDRequest) XXX_DiscardUnknown() {
-	xxx_messageInfo_GetEventByIDRequest.DiscardUnknown(m)
-}
-
-var xxx_messageInfo_GetEventByIDRequest proto.InternalMessageInfo
-
-func (m *GetEventByIDRequest) GetID() string {
-	if m != nil {
-		return m.ID
-	}
-	return ""
-}
-
-type GetEventByIDResponse struct {
-	Event                *Event   `protobuf:"bytes,1,opt,name=event,proto3" json:"event,omitempty"`
-	XXX_NoUnkeyedLiteral struct{} `json:"-"`
-	XXX_unrecognized     []byte   `json:"-"`
-	XXX_sizecache        int32    `json:"-"`
-}
-
-func (m *GetEventByIDResponse) Reset()         { *m = GetEventByIDResponse{} }
-func (m *GetEventByIDResponse) String() string { return proto.CompactTextString(m) }
-func (*GetEventByIDResponse) ProtoMessage()    {}
-func (*GetEventByIDResponse) Descriptor() ([]byte, []int) {
-	return fileDescriptor_510ac585eaa75cc0, []int{8}
-}
-
-func (m *GetEventByIDResponse) XXX_Unmarshal(b []byte) error {
-	return xxx_messageInfo_GetEventByIDResponse.Unmarshal(m, b)
-}
-func (m *GetEventByIDResponse) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
-	return xxx_messageInfo_GetEventByIDResponse.Marshal(b, m, deterministic)
-}
-func (m *GetEventByIDResponse) XXX_Merge(src proto.Message) {
-	xxx_messageInfo_GetEventByIDResponse.Merge(m, src)
-}
-func (m *GetEventByIDResponse) XXX_Size() int {
-	return xxx_messageInfo_GetEventByIDResponse.Size(m)
-}
-func (m *GetEventByIDResponse) XXX_DiscardUnknown() {
-	xxx_messageInfo_GetEventByIDResponse.DiscardUnknown(m)
-}
-
-var xxx_messageInfo_GetEventByIDResponse proto.InternalMessageInfo
-
-func (m *GetEventByIDResponse) GetEvent() *Event {
-	if m != nil {
-		return m.Event
-	}
-	return nil
-}
-
-type CreatePositionRequest struct {
-	Position             *Position `protobuf:"bytes,1,opt,name=position,proto3" json:"position,omitempty"`
-	EventID              string    `protobuf:"bytes,2,opt,name=eventID,proto3" json:"eventID,omitempty"`
-	XXX_NoUnkeyedLiteral struct{}  `json:"-"`
-	XXX_unrecognized     []byte    `json:"-"`
-	XXX_sizecache        int32     `json:"-"`
-}
-
-func (m *CreatePositionRequest) Reset()         { *m = CreatePositionRequest{} }
-func (m *CreatePositionRequest) String() string { return proto.CompactTextString(m) }
-func (*CreatePositionRequest) ProtoMessage()    {}
-func (*CreatePositionRequest) Descriptor() ([]byte, []int) {
-	return fileDescriptor_510ac585eaa75cc0, []int{9}
-}
-
-func (m *CreatePositionRequest) XXX_Unmarshal(b []byte) error {
-	return xxx_messageInfo_CreatePositionRequest.Unmarshal(m, b)
-}
-func (m *CreatePositionRequest) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
-	return xxx_messageInfo_CreatePositionRequest.Marshal(b, m, deterministic)
-}
-func (m *CreatePositionRequest) XXX_Merge(src proto.Message) {
-	xxx_messageInfo_CreatePositionRequest.Merge(m, src)
-}
-func (m *CreatePositionRequest) XXX_Size() int {
-	return xxx_messageInfo_CreatePositionRequest.Size(m)
-}
-func (m *CreatePositionRequest) XXX_DiscardUnknown() {
-	xxx_messageInfo_CreatePositionRequest.DiscardUnknown(m)
-}
-
-var xxx_messageInfo_CreatePositionRequest proto.InternalMessageInfo
-
-func (m *CreatePositionRequest) GetPosition() *Position {
-	if m != nil {
-		return m.Position
-	}
-	return nil
-}
-
-func (m *CreatePositionRequest) GetEventID() string {
-	if m != nil {
-		return m.EventID
-	}
-	return ""
-}
-
-type CreatePositionResponse struct {
-	Success              bool     `protobuf:"varint,1,opt,name=success,proto3" json:"success,omitempty"`
-	XXX_NoUnkeyedLiteral struct{} `json:"-"`
-	XXX_unrecognized     []byte   `json:"-"`
-	XXX_sizecache        int32    `json:"-"`
-}
-
-func (m *CreatePositionResponse) Reset()         { *m = CreatePositionResponse{} }
-func (m *CreatePositionResponse) String() string { return proto.CompactTextString(m) }
-func (*CreatePositionResponse) ProtoMessage()    {}
-func (*CreatePositionResponse) Descriptor() ([]byte, []int) {
-	return fileDescriptor_510ac585eaa75cc0, []int{10}
-}
-
-func (m *CreatePositionResponse) XXX_Unmarshal(b []byte) error {
-	return xxx_messageInfo_CreatePositionResponse.Unmarshal(m, b)
-}
-func (m *CreatePositionResponse) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
-	return xxx_messageInfo_CreatePositionResponse.Marshal(b, m, deterministic)
-}
-func (m *CreatePositionResponse) XXX_Merge(src proto.Message) {
-	xxx_messageInfo_CreatePositionResponse.Merge(m, src)
-}
-func (m *CreatePositionResponse) XXX_Size() int {
-	return xxx_messageInfo_CreatePositionResponse.Size(m)
-}
-func (m *CreatePositionResponse) XXX_DiscardUnknown() {
-	xxx_messageInfo_CreatePositionResponse.DiscardUnknown(m)
-}
-
-var xxx_messageInfo_CreatePositionResponse proto.InternalMessageInfo
-
-func (m *CreatePositionResponse) GetSuccess() bool {
-	if m != nil {
-		return m.Success
-	}
-	return false
-}
-
 func init() {
-	proto.RegisterType((*Skill)(nil), "event.Skill")
-	proto.RegisterType((*Position)(nil), "event.Position")
 	proto.RegisterType((*Event)(nil), "event.Event")
 	proto.RegisterType((*GetEventsRequest)(nil), "event.GetEventsRequest")
 	proto.RegisterType((*GetEventsResponse)(nil), "event.GetEventsResponse")
 	proto.RegisterType((*CreateEventRequest)(nil), "event.CreateEventRequest")
 	proto.RegisterType((*CreateEventResponse)(nil), "event.CreateEventResponse")
-	proto.RegisterType((*GetEventByIDRequest)(nil), "event.GetEventByIDRequest")
-	proto.RegisterType((*GetEventByIDResponse)(nil), "event.GetEventByIDResponse")
-	proto.RegisterType((*CreatePositionRequest)(nil), "event.CreatePositionRequest")
-	proto.RegisterType((*CreatePositionResponse)(nil), "event.CreatePositionResponse")
 }
 
 func init() { proto.RegisterFile("event/event.proto", fileDescriptor_510ac585eaa75cc0) }
 
 var fileDescriptor_510ac585eaa75cc0 = []byte{
-	// 496 bytes of a gzipped FileDescriptorProto
-	0x1f, 0x8b, 0x08, 0x00, 0x00, 0x00, 0x00, 0x00, 0x02, 0xff, 0xb4, 0x54, 0xcd, 0x6e, 0xd3, 0x40,
-	0x10, 0xc6, 0x4e, 0x9d, 0x9f, 0x49, 0x54, 0xe8, 0x34, 0xc0, 0x62, 0x0a, 0x8a, 0x56, 0x20, 0x55,
-	0x42, 0x14, 0x11, 0x4e, 0xe5, 0x84, 0x20, 0x80, 0x7c, 0x02, 0xb9, 0x77, 0x24, 0xe3, 0xcc, 0xc1,
-	0xc2, 0xb5, 0x8d, 0xd7, 0x89, 0xe8, 0x0b, 0xf1, 0x04, 0x3c, 0x0d, 0x4f, 0x83, 0x3c, 0xbb, 0xeb,
-	0xd8, 0x4e, 0x38, 0x70, 0xe0, 0x12, 0x79, 0xe6, 0x9b, 0xfd, 0xe6, 0xfb, 0x66, 0x76, 0x03, 0x27,
-	0xb4, 0xa5, 0xac, 0x7a, 0xc1, 0xbf, 0x17, 0x45, 0x99, 0x57, 0x39, 0x7a, 0x1c, 0xc8, 0x97, 0xe0,
-	0x5d, 0x7d, 0x4b, 0xd2, 0x14, 0x11, 0x8e, 0xb2, 0xe8, 0x9a, 0x84, 0xb3, 0x70, 0xce, 0x27, 0x21,
-	0x7f, 0xe3, 0x1c, 0xbc, 0x94, 0xb6, 0x94, 0x0a, 0x97, 0x93, 0x3a, 0x90, 0xbf, 0x1d, 0x18, 0x7f,
-	0xce, 0x55, 0x52, 0x25, 0x79, 0x76, 0xf0, 0x98, 0x80, 0x51, 0x9c, 0x5f, 0x17, 0x51, 0x76, 0x63,
-	0x0e, 0xda, 0x10, 0x7d, 0x18, 0xa7, 0x79, 0x1c, 0xd5, 0x27, 0xc5, 0x80, 0xa1, 0x26, 0xc6, 0x05,
-	0x4c, 0xd7, 0xa4, 0xe2, 0x32, 0x29, 0x18, 0x3e, 0x62, 0xb8, 0x9d, 0xc2, 0xc7, 0x00, 0xf4, 0xa3,
-	0xa0, 0x32, 0xa1, 0x2c, 0x26, 0xe1, 0x71, 0x41, 0x2b, 0x83, 0x67, 0x30, 0xa1, 0xf5, 0xc6, 0xd0,
-	0x0f, 0x19, 0xde, 0x25, 0xf0, 0x09, 0x0c, 0x55, 0xed, 0x54, 0x89, 0xd1, 0x62, 0x70, 0x3e, 0x5d,
-	0xce, 0x2e, 0xf4, 0x38, 0xd8, 0x7e, 0x68, 0x30, 0xf9, 0xd3, 0x01, 0xef, 0x7d, 0x9d, 0xc7, 0x63,
-	0x70, 0x83, 0x95, 0xf1, 0xe5, 0x06, 0xab, 0xc6, 0xa9, 0xdb, 0x72, 0xda, 0xd3, 0x3c, 0xd8, 0xd7,
-	0x3c, 0x07, 0x6f, 0x4b, 0xd9, 0x86, 0x8c, 0x1f, 0x1d, 0xd4, 0x5c, 0xeb, 0xa8, 0xb2, 0x1e, 0xf8,
-	0x1b, 0x9f, 0xc3, 0xa4, 0x30, 0x53, 0x55, 0x62, 0xc8, 0x12, 0x6f, 0x1b, 0x89, 0x76, 0xda, 0xe1,
-	0xae, 0x42, 0x22, 0xdc, 0xf9, 0x48, 0x15, 0x4b, 0x55, 0x21, 0x7d, 0xdf, 0x90, 0xaa, 0xe4, 0x25,
-	0x9c, 0xb4, 0x72, 0xaa, 0xc8, 0x33, 0x45, 0xb5, 0x6f, 0x66, 0x51, 0xc2, 0xe9, 0xf8, 0xe6, 0xb2,
-	0xd0, 0x60, 0xb2, 0x02, 0x7c, 0x57, 0x52, 0x54, 0x91, 0x4e, 0x6b, 0xc2, 0xff, 0xed, 0x59, 0x5e,
-	0xc2, 0x69, 0xa7, 0xab, 0x91, 0x2c, 0x41, 0xdf, 0x4e, 0x9e, 0x7e, 0x5f, 0xb1, 0xb9, 0xb8, 0x4f,
-	0xe1, 0xd4, 0x7a, 0x7d, 0x7b, 0x13, 0xac, 0xac, 0xe2, 0xde, 0xd6, 0xe4, 0x6b, 0x98, 0x77, 0xcb,
-	0xfe, 0xa1, 0xc5, 0x17, 0xb8, 0xab, 0xd5, 0x35, 0xf3, 0x37, 0x4d, 0x9e, 0xc1, 0xd8, 0x2e, 0xc2,
-	0x9c, 0xdf, 0xdb, 0x54, 0x53, 0x50, 0xbf, 0x06, 0xc6, 0x82, 0x95, 0x7d, 0x0d, 0x26, 0x94, 0x4b,
-	0xb8, 0xd7, 0xe7, 0x37, 0xea, 0x04, 0x8c, 0xd4, 0x26, 0x8e, 0x49, 0x29, 0xe6, 0x1f, 0x87, 0x36,
-	0x5c, 0xfe, 0x72, 0x61, 0xc6, 0x22, 0xaf, 0xa8, 0xdc, 0x26, 0x31, 0xe1, 0x1b, 0x98, 0x34, 0x3b,
-	0xc7, 0xfb, 0x46, 0x46, 0xff, 0x66, 0xf8, 0x62, 0x1f, 0xd0, 0xad, 0xe4, 0x2d, 0xfc, 0x00, 0xd3,
-	0xd6, 0x12, 0xf0, 0x81, 0x29, 0xdd, 0xbf, 0x0e, 0xbe, 0x7f, 0x08, 0x6a, 0x78, 0x02, 0x98, 0xb5,
-	0x47, 0x8d, 0x7e, 0xaf, 0x67, 0x6b, 0x4d, 0xfe, 0xc3, 0x83, 0x58, 0x43, 0xf5, 0x09, 0x8e, 0xbb,
-	0x93, 0xc1, 0xb3, 0x4e, 0xeb, 0xde, 0x42, 0xfc, 0x47, 0x7f, 0x41, 0x2d, 0xe1, 0xd7, 0x21, 0xff,
-	0xe9, 0xbd, 0xfa, 0x13, 0x00, 0x00, 0xff, 0xff, 0x96, 0xed, 0x30, 0x9c, 0x09, 0x05, 0x00, 0x00,
+	// 265 bytes of a gzipped FileDescriptorProto
+	0x1f, 0x8b, 0x08, 0x00, 0x00, 0x00, 0x00, 0x00, 0x02, 0xff, 0xb4, 0x52, 0xb1, 0x4e, 0xc3, 0x40,
+	0x0c, 0x25, 0x69, 0x53, 0xa9, 0x4e, 0x85, 0xa8, 0x41, 0xe2, 0xc8, 0x14, 0x9d, 0x18, 0x3a, 0x15,
+	0xa9, 0x4c, 0xdd, 0x90, 0x28, 0xa0, 0xae, 0xe1, 0x0b, 0x42, 0xeb, 0x21, 0x03, 0x97, 0x90, 0x73,
+	0xc3, 0xaf, 0xf0, 0xb9, 0x28, 0x76, 0x40, 0xa1, 0x61, 0xed, 0x12, 0xd9, 0xef, 0x39, 0xcf, 0xcf,
+	0x4f, 0x07, 0x73, 0x6a, 0xc8, 0xf1, 0x9d, 0x7c, 0x97, 0x55, 0x5d, 0x72, 0x89, 0x91, 0x34, 0xf6,
+	0x13, 0xa2, 0xa7, 0xb6, 0xc0, 0x73, 0x08, 0xb7, 0x1b, 0x13, 0xa4, 0xc1, 0x62, 0x9a, 0x85, 0xdb,
+	0x0d, 0x22, 0x8c, 0x5d, 0xfe, 0x4e, 0x26, 0x14, 0x44, 0x6a, 0x4c, 0x21, 0xde, 0x93, 0xdf, 0xd5,
+	0x45, 0xc5, 0x45, 0xe9, 0xcc, 0x48, 0xa8, 0x3e, 0x84, 0x57, 0x10, 0x35, 0xe4, 0x0e, 0x64, 0xc6,
+	0xc2, 0x69, 0xd3, 0x6a, 0xed, 0x73, 0x26, 0x13, 0xa9, 0x56, 0x5b, 0x5b, 0x84, 0x8b, 0x17, 0x62,
+	0xd9, 0xed, 0x33, 0xfa, 0x38, 0x90, 0x67, 0xbb, 0x86, 0x79, 0x0f, 0xf3, 0x55, 0xe9, 0x3c, 0xe1,
+	0x2d, 0x4c, 0xc4, 0xaa, 0x37, 0x41, 0x3a, 0x5a, 0xc4, 0xab, 0xd9, 0x52, 0xcf, 0x90, 0xb1, 0xac,
+	0xe3, 0x2c, 0x03, 0x3e, 0xd6, 0x94, 0x33, 0x29, 0xac, 0x82, 0x27, 0x3f, 0x62, 0x0d, 0x97, 0x7f,
+	0xb6, 0x76, 0x96, 0x2d, 0x68, 0xba, 0x12, 0xe7, 0xb1, 0x63, 0xa5, 0x56, 0x5f, 0x01, 0xcc, 0x04,
+	0x78, 0xa5, 0xba, 0x29, 0x76, 0x84, 0x0f, 0x30, 0xfd, 0x3d, 0x1e, 0xaf, 0xbb, 0x5f, 0x8e, 0x23,
+	0x4a, 0xcc, 0x90, 0xd0, 0xa5, 0xf6, 0x0c, 0x9f, 0x21, 0xee, 0xb9, 0xc1, 0x9b, 0x6e, 0x74, 0x98,
+	0x4b, 0x92, 0xfc, 0x47, 0xfd, 0xe8, 0xbc, 0x4d, 0xe4, 0x85, 0xdc, 0x7f, 0x07, 0x00, 0x00, 0xff,
+	0xff, 0x83, 0x48, 0x35, 0xf8, 0x36, 0x02, 0x00, 0x00,
 }
 
 // Reference imports to suppress errors if they are not otherwise used.
@@ -638,8 +312,6 @@ const _ = grpc.SupportPackageIsVersion4
 type EventServiceClient interface {
 	GetEvents(ctx context.Context, in *GetEventsRequest, opts ...grpc.CallOption) (*GetEventsResponse, error)
 	CreateEvent(ctx context.Context, in *CreateEventRequest, opts ...grpc.CallOption) (*CreateEventResponse, error)
-	GetEventByID(ctx context.Context, in *GetEventByIDRequest, opts ...grpc.CallOption) (*GetEventByIDResponse, error)
-	CreatePosition(ctx context.Context, in *CreatePositionRequest, opts ...grpc.CallOption) (*CreatePositionResponse, error)
 }
 
 type eventServiceClient struct {
@@ -668,30 +340,10 @@ func (c *eventServiceClient) CreateEvent(ctx context.Context, in *CreateEventReq
 	return out, nil
 }
 
-func (c *eventServiceClient) GetEventByID(ctx context.Context, in *GetEventByIDRequest, opts ...grpc.CallOption) (*GetEventByIDResponse, error) {
-	out := new(GetEventByIDResponse)
-	err := c.cc.Invoke(ctx, "/event.EventService/GetEventByID", in, out, opts...)
-	if err != nil {
-		return nil, err
-	}
-	return out, nil
-}
-
-func (c *eventServiceClient) CreatePosition(ctx context.Context, in *CreatePositionRequest, opts ...grpc.CallOption) (*CreatePositionResponse, error) {
-	out := new(CreatePositionResponse)
-	err := c.cc.Invoke(ctx, "/event.EventService/CreatePosition", in, out, opts...)
-	if err != nil {
-		return nil, err
-	}
-	return out, nil
-}
-
 // EventServiceServer is the server API for EventService service.
 type EventServiceServer interface {
 	GetEvents(context.Context, *GetEventsRequest) (*GetEventsResponse, error)
 	CreateEvent(context.Context, *CreateEventRequest) (*CreateEventResponse, error)
-	GetEventByID(context.Context, *GetEventByIDRequest) (*GetEventByIDResponse, error)
-	CreatePosition(context.Context, *CreatePositionRequest) (*CreatePositionResponse, error)
 }
 
 // UnimplementedEventServiceServer can be embedded to have forward compatible implementations.
@@ -703,12 +355,6 @@ func (*UnimplementedEventServiceServer) GetEvents(ctx context.Context, req *GetE
 }
 func (*UnimplementedEventServiceServer) CreateEvent(ctx context.Context, req *CreateEventRequest) (*CreateEventResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method CreateEvent not implemented")
-}
-func (*UnimplementedEventServiceServer) GetEventByID(ctx context.Context, req *GetEventByIDRequest) (*GetEventByIDResponse, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method GetEventByID not implemented")
-}
-func (*UnimplementedEventServiceServer) CreatePosition(ctx context.Context, req *CreatePositionRequest) (*CreatePositionResponse, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method CreatePosition not implemented")
 }
 
 func RegisterEventServiceServer(s *grpc.Server, srv EventServiceServer) {
@@ -751,42 +397,6 @@ func _EventService_CreateEvent_Handler(srv interface{}, ctx context.Context, dec
 	return interceptor(ctx, in, info, handler)
 }
 
-func _EventService_GetEventByID_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(GetEventByIDRequest)
-	if err := dec(in); err != nil {
-		return nil, err
-	}
-	if interceptor == nil {
-		return srv.(EventServiceServer).GetEventByID(ctx, in)
-	}
-	info := &grpc.UnaryServerInfo{
-		Server:     srv,
-		FullMethod: "/event.EventService/GetEventByID",
-	}
-	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(EventServiceServer).GetEventByID(ctx, req.(*GetEventByIDRequest))
-	}
-	return interceptor(ctx, in, info, handler)
-}
-
-func _EventService_CreatePosition_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(CreatePositionRequest)
-	if err := dec(in); err != nil {
-		return nil, err
-	}
-	if interceptor == nil {
-		return srv.(EventServiceServer).CreatePosition(ctx, in)
-	}
-	info := &grpc.UnaryServerInfo{
-		Server:     srv,
-		FullMethod: "/event.EventService/CreatePosition",
-	}
-	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(EventServiceServer).CreatePosition(ctx, req.(*CreatePositionRequest))
-	}
-	return interceptor(ctx, in, info, handler)
-}
-
 var _EventService_serviceDesc = grpc.ServiceDesc{
 	ServiceName: "event.EventService",
 	HandlerType: (*EventServiceServer)(nil),
@@ -798,14 +408,6 @@ var _EventService_serviceDesc = grpc.ServiceDesc{
 		{
 			MethodName: "CreateEvent",
 			Handler:    _EventService_CreateEvent_Handler,
-		},
-		{
-			MethodName: "GetEventByID",
-			Handler:    _EventService_GetEventByID_Handler,
-		},
-		{
-			MethodName: "CreatePosition",
-			Handler:    _EventService_CreatePosition_Handler,
 		},
 	},
 	Streams:  []grpc.StreamDesc{},

@@ -2,7 +2,6 @@ package api
 
 import (
 	"context"
-	"errors"
 	"net"
 
 	"github.com/mtmendonca/teamder-api/common/grpc/event"
@@ -67,80 +66,6 @@ func (s *Service) CreateEvent(ctx context.Context, r *event.CreateEventRequest) 
 		Venue:       e.Venue,
 		Date:        e.Date,
 	}}, nil
-}
-
-// GetEventByID returns events by id
-func (s *Service) GetEventByID(ctx context.Context, r *event.GetEventByIDRequest) (*event.GetEventByIDResponse, error) {
-	ID := r.GetID()
-
-	e, err := s.EventStorage.GetEventByID(ctx, ID)
-	if err != nil {
-		return &event.GetEventByIDResponse{}, err
-	}
-
-	positions := make([]*event.Position, len(e.Positions))
-	for i, pos := range e.Positions {
-		skills := make([]*event.Skill, len(pos.Skills))
-		for j, skill := range pos.Skills {
-			skills[j] = &event.Skill{
-				Name:  skill.Name,
-				Level: skill.Level,
-			}
-		}
-		positions[i] = &event.Position{
-			Name:        pos.Name,
-			Company:     pos.Company,
-			Location:    pos.Location,
-			Description: pos.Description,
-			Experience:  pos.Experience,
-			Education:   pos.Education,
-			Skills:      skills,
-		}
-	}
-
-	return &event.GetEventByIDResponse{
-		Event: &event.Event{
-			ID:          e.ID,
-			Name:        e.Name,
-			Description: e.Description,
-			Venue:       e.Venue,
-			Date:        e.Date,
-			Positions:   positions,
-		},
-	}, nil
-}
-
-// CreatePosition adds a position to an event
-func (s *Service) CreatePosition(ctx context.Context, r *event.CreatePositionRequest) (*event.CreatePositionResponse, error) {
-	res := new(event.CreatePositionResponse)
-
-	skills := make([]*types.Skill, len(r.GetPosition().GetSkills()))
-	for i, skill := range r.GetPosition().GetSkills() {
-		skills[i] = &types.Skill{
-			Name:  skill.GetName(),
-			Level: skill.GetLevel(),
-		}
-	}
-
-	p := &types.Position{
-		Name:        r.GetPosition().GetName(),
-		Company:     r.GetPosition().GetCompany(),
-		Location:    r.GetPosition().GetLocation(),
-		Description: r.GetPosition().GetDescription(),
-		Experience:  r.GetPosition().GetExperience(),
-		Education:   r.GetPosition().GetEducation(),
-		Skills:      skills,
-	}
-
-	err := s.EventStorage.CreatePosition(ctx, r.GetEventID(), p)
-
-	if err != nil {
-		s.Log.Warn("Could not create position", err)
-		return nil, errors.New("Could not create position")
-	}
-
-	res.Success = true
-	return res, nil
 }
 
 // Start fires up the service

@@ -1,6 +1,10 @@
 version: '2.4'
 
 services:
+  web:
+    image: ddrumsfreak/teamder-web
+    ports:
+      - 8080:80
   mongo:
     image: mongo
     environment:
@@ -12,44 +16,25 @@ services:
       args:
         GO_VERSION: ${GO_VERSION}
       context: .
-      dockerfile: dev.Dockerfile
+      dockerfile: gateway.Dockerfile
     environment:
       API_PORT: 3000
       JWT_SECRET_KEY:
       ACCOUNT_SERVICE_ENDPOINT:
       EVENT_SERVICE_ENDPOINT:
-    working_dir: /go/src/github.com/mtmendonca/teamder-api/gateway
     ports:
       - 3000:3000
-  account:
-    build:
-      args:
-        GO_VERSION: ${GO_VERSION}
-      context: .
-      dockerfile: dev.Dockerfile
-    depends_on:
-      - mongo
-    environment:
-      API_PORT: 3001
-      MONGO_ENDPOINT:
-      MONGO_DATABASE:
-      GOOGLE_API_CLIENT_ID:
-      JWT_SECRET_KEY:
-    working_dir: /go/src/github.com/mtmendonca/teamder-api/account
-    ports:
-      - 3001:3001
   event:
     build:
       args:
         GO_VERSION: ${GO_VERSION}
       context: .
-      dockerfile: dev.Dockerfile
+      dockerfile: event.Dockerfile
     depends_on:
       - mongo
     environment:
       API_PORT: 3002
       MONGO_ENDPOINT:
       MONGO_DATABASE:
-    working_dir: /go/src/github.com/mtmendonca/teamder-api/event
     ports:
       - 3002:3002
